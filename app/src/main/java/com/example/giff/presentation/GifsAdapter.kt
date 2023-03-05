@@ -31,7 +31,7 @@ class GifsAdapter(val context: Context, val gifs: MutableList<DataObject>) :
         val data = gifs[position]
         Glide.with(context)
             .load(data.images.ogImage.url)
-            .placeholder(R.drawable.img)
+            .placeholder(R.drawable.loader)
             .into(holder.imageView)
     }
     private val limit = 25
