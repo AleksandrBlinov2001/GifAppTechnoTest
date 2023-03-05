@@ -41,7 +41,7 @@ class GifFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this).get(GifViewModel::class.java)
-        return inflater.inflate(R.layout.activity_second, container, false)
+        return inflater.inflate(R.layout.fragment_gif, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
