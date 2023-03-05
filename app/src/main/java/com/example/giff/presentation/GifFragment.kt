@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -15,16 +16,23 @@ class GifFragment: Fragment() {
 
     companion object {
 
-        fun newInstance(url: String) = GifFragment().apply {
+        fun newInstance(url: String, title: String) = GifFragment().apply {
             this.arguments = bundleOf(
-                "url" to url
+                "url" to url, "title" to title
             )
         }
+
     }
 
     private val url: String by lazy {
         arguments?.getString("url").orEmpty()
     }
+
+
+    private val title: String by lazy {
+        arguments?.getString("title").orEmpty()
+    }
+
 
     private lateinit var viewModel: GifViewModel
 
@@ -39,8 +47,10 @@ class GifFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val imageView = view.findViewById<ImageView>(R.id.imageView)
-        //val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
+        val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
 
+
+        titleTextView.text = title
 
         Glide.with(this)
             .load(url)

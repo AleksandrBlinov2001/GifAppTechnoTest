@@ -22,13 +22,11 @@ class GifListViewModel(
 
     fun fetchGifs(query: String = defaultQuery) {
         val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-            println("THROWABLE" + throwable)
         }
 
         val coroutineContext: CoroutineContext = Dispatchers.IO + exceptionHandler
 
         viewModelScope.launch(coroutineContext) {
-            println("FUCK" + api.getGifs(query).res)
             liveData.postValue(
                 api.getGifs(query).res
             )

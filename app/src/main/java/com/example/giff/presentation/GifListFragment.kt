@@ -23,6 +23,7 @@ class GifListFragment: Fragment() {
 
     private lateinit var viewModel: GifListViewModel
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,11 +55,13 @@ class GifListFragment: Fragment() {
         adapter.setOnItemClickListener(object : GifsAdapter.OnItemClickListener{
             override fun onItemClick(position: Int) {
                 val url = adapter.gifs.getOrNull(position)?.images?.ogImage?.url.orEmpty()
+                val title = adapter.gifs.getOrNull(position)?.title.orEmpty()
 
                 parentFragmentManager.commit {
-                    add(R.id.container, GifFragment.newInstance(url), null,)
+                    add(R.id.container, GifFragment.newInstance(url, title), null,)
                     addToBackStack(null)
                 }
+
             }
         })
 

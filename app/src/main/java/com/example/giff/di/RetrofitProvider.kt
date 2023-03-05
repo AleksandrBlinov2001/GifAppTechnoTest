@@ -25,7 +25,7 @@ object RetrofitProvider {
 
     fun provideGiphyApi(): GiphyApi = provideRetrofit().create(GiphyApi::class.java)
 
-    // Перехватывает запрос и подставляет api-key (Чтобы в каждом запросе не писать)
+    // Перехватывает запрос и подставляет api-key
     class ApiKeyInterceptor: Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val request = chain.request().newBuilder()
@@ -34,7 +34,6 @@ object RetrofitProvider {
                 .newBuilder()
                 .addQueryParameter("api_key", API_KEY).build()
             request.url(url)
-            println("REQUEST GIF "+ url)
             return chain.proceed(request.build())
         }
     }

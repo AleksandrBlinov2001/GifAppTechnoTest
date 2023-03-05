@@ -6,9 +6,9 @@
     
     <ImageView
         android:id="@+id/ivGif"
-        android:layout_width="220dp"
+        android:layout_width="180dp"
         android:scaleType="fitXY"
-        android:layout_height="220dp"
+        android:layout_height="180dp"
         android:src="@mipmap/ic_launcher"/>
 
 </RelativeLayout>
